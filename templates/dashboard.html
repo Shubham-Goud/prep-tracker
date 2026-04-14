@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<h2>📊 Dashboard</h2>
+
+<div class="card">
+
+    <p>Progress: <b>{{ percent }}%</b></p>
+
+    <div style="background:#020617; height:10px; border-radius:6px;">
+        <div id="progressBar" data-progress="{{ percent }}"
+             style="height:10px; width:0%; background:#22c55e;"></div>
+    </div>
+
+    <p>🔥 Streak: <b>{{ streak }}</b></p>
+
+</div>
+
+<div class="grid">
+
+{% for d in days %}
+<div class="day {% if d.done %}done{% endif %}">
+    <a href="/day/{{ d.day }}" style="color:white;">Day {{ d.day }}</a>
+</div>
+{% endfor %}
+
+</div>
+
+<script>
+    var bar = document.getElementById("progressBar");
+    if (bar) {
+        var value = bar.getAttribute("data-progress");
+        bar.style.width = value + "%";
+    }
+</script>
+
+{% endblock %}

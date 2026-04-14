@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}SQL Day {{day}}{% endblock %}
+
+{% block content %}
+
+<h2>🗄️ SQL Day {{day}}</h2>
+
+<div class="card">
+<h3>{{ sql.topic }}</h3>
+<a href="{{ sql.video }}" target="_blank" class="btn">Watch</a>
+</div>
+
+<div class="card">
+<h3>🔥 Problems</h3>
+
+{% for p in problems %}
+<div class="problem">
+
+    <a href="{{p.link}}" target="_blank">{{p.name}}</a>
+
+    {% if p.name in solved %}
+        <span style="color:#22c55e;">✔</span>
+    {% else %}
+        <form method="POST" action="/mark_solved">
+            <input type="hidden" name="day" value="{{day}}">
+            <input type="hidden" name="name" value="{{p.name}}">
+            <button class="btn">Solve</button>
+        </form>
+    {% endif %}
+
+</div>
+{% endfor %}
+
+</div>
+
+{% endblock %}

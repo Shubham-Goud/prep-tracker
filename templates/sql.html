@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}SQL{% endblock %}
+
+{% block content %}
+
+<h2>🗄️ SQL 100 Days</h2>
+
+<div class="grid">
+
+{% for d in days %}
+<div class="day">
+    <a href="/sql/day/{{d}}" style="color:white;">Day {{d}}</a>
+</div>
+{% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Day {{day}}{% endblock %}
+
+{% block content %}
+
+<h2>📅 Day {{day}}</h2>
+
+<div class="card">
+<h3>📘 DSA</h3>
+<p>{{ dsa.topic }}</p>
+<a href="{{ dsa.video }}" target="_blank" class="btn">Watch</a>
+</div>
+
+<div class="card">
+<h3>🐍 Python</h3>
+<p>{{ python.topic }}</p>
+<a href="{{ python.video }}" target="_blank" class="btn">Watch</a>
+</div>
+
+<div class="card">
+<h3>🔥 Problems</h3>
+
+{% for p in problems %}
+<div class="problem">
+<a href="{{p.link}}" target="_blank">{{p.name}}</a>
+</div>
+{% endfor %}
+
+</div>
+
+<a href="/mark_done/{{day}}" class="btn success">Mark Complete</a>
+
+{% endblock %}

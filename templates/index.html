@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<div style="margin-bottom:40px;">
+    <h1 style="font-size:40px; margin-bottom:10px;">
+        🚀 Crack Placements with Structured Learning
+    </h1>
+
+    <p style="color:#94a3b8; font-size:16px; max-width:600px;">
+        Master DSA, Python, and SQL in a structured 100-day roadmap with daily tasks,
+        real problems, and progress tracking.
+    </p>
+
+    <div style="margin-top:20px;">
+        <a href="/dashboard" class="btn">Start DSA</a>
+        <a href="/sql" class="btn" style="margin-left:10px; background:#22c55e;">
+            Start SQL
+        </a>
+    </div>
+</div>
+
+<!-- PROGRESS CARD -->
+<div class="card">
+
+    <h3>📊 Your Progress</h3>
+
+    <p>Day <b>{{ done }}</b> / 100</p>
+
+    <div style="background:#020617; height:10px; border-radius:6px; margin:10px 0;">
+        <div id="progressBar" data-progress="{{ percent }}"
+             style="height:10px; width:0%; background:#22c55e; border-radius:6px;">
+        </div>
+    </div>
+
+    <p>🔥 Current Streak: <b>{{ streak }}</b> days</p>
+
+</div>
+
+<!-- FEATURES SECTION -->
+<div style="margin-top:30px;">
+
+    <h2 style="margin-bottom:15px;">✨ Features</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>📘 Structured Learning</h3>
+            <p style="color:#94a3b8;">
+                Follow a 100-day roadmap designed for placements.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🔥 Daily Problems</h3>
+            <p style="color:#94a3b8;">
+                Solve real interview-level problems every day.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>📊 Progress Tracking</h3>
+            <p style="color:#94a3b8;">
+                Track completion, streaks, and consistency.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🧠 Smart Practice</h3>
+            <p style="color:#94a3b8;">
+                Focus on DSA, Python, and SQL together.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- CALL TO ACTION -->
+<div class="card" style="margin-top:30px; text-align:center;">
+
+    <h2>🚀 Start Your Journey Today</h2>
+
+    <p style="color:#94a3b8;">
+        Consistency + Practice = Placement Success
+    </p>
+
+    <a href="/dashboard" class="btn" style="margin-top:10px;">
+        Go to Dashboard
+    </a>
+
+</div>
+
+<!-- JS (NO RED LINE) -->
+<script>
+    var bar = document.getElementById("progressBar");
+    if (bar) {
+        var value = bar.getAttribute("data-progress");
+        bar.style.width = value + "%";
+    }
+</script>
+
+{% endblock %}
