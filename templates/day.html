@@ -5,29 +5,71 @@
 
 <h2>📅 Day {{day}}</h2>
 
+<!-- DSA -->
 <div class="card">
-<h3>📘 DSA</h3>
-<p>{{ dsa.topic }}</p>
-<a href="{{ dsa.video }}" target="_blank" class="btn">Watch</a>
+    <h3>📘 DSA</h3>
+    <p>{{ dsa.topic }}</p>
+
+    <a href="{{ dsa.video }}" target="_blank" class="btn">
+        ▶ Watch
+    </a>
 </div>
 
+<!-- PYTHON -->
 <div class="card">
-<h3>🐍 Python</h3>
-<p>{{ python.topic }}</p>
-<a href="{{ python.video }}" target="_blank" class="btn">Watch</a>
+    <h3>🐍 Python</h3>
+    <p>{{ python.topic }}</p>
+
+    <a href="{{ python.video }}" target="_blank" class="btn">
+        ▶ Watch
+    </a>
 </div>
 
+<!-- JAVA (NEW) -->
 <div class="card">
-<h3>🔥 Problems</h3>
+    <h3>☕ Java</h3>
+    <p>{{ java.topic }}</p>
 
-{% for p in problems %}
-<div class="problem">
-<a href="{{p.link}}" target="_blank">{{p.name}}</a>
-</div>
-{% endfor %}
-
+    <a href="{{ java.video }}" target="_blank" class="btn">
+        ▶ Watch
+    </a>
 </div>
 
-<a href="/mark_done/{{day}}" class="btn success">Mark Complete</a>
+<!-- PROBLEMS -->
+<div class="card">
+    <h3>🔥 Problems</h3>
+
+    {% for p in problems %}
+    <div class="problem">
+        <a href="{{ p.link }}" target="_blank">
+            🔗 {{ p.name }}
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- MARK COMPLETE -->
+<div class="card">
+    <a href="/mark_done/{{day}}" class="btn success">
+        ✅ Mark Completed
+    </a>
+</div>
+
+<!-- NOTES -->
+<div class="card">
+    <h3>✍️ Notes</h3>
+
+    <form method="POST" action="/save_note">
+        <input type="hidden" name="day" value="{{day}}">
+
+        <textarea name="content"
+                  placeholder="Write your notes..."
+                  style="width:100%; height:100px; padding:10px;"></textarea>
+
+        <br><br>
+
+        <button class="btn">Save Notes</button>
+    </form>
+</div>
 
 {% endblock %}

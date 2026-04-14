@@ -14,133 +14,101 @@ def get_video_link(topic, type_):
 # ---------- 100 DAY TOPICS ----------
 def get_day_data(day):
 
-    schedule = [
+    # ---------------- ALIGNED TOPICS ----------------
+    topics = [
 
-        # -------- ARRAYS (1–20) --------
-        ("Arrays Basics", "Python Lists Basics"),
-        ("Array Traversal", "List Indexing in Python"),
-        ("Insertion & Deletion", "List Methods in Python"),
-        ("Prefix Sum", "For Loop in Python"),
-        ("Kadane Algorithm", "Loops in Python"),
-        ("Sliding Window", "List Iteration in Python"),
-        ("Two Pointer", "List Comprehension in Python"),
-        ("Subarrays", "Nested Lists in Python"),
-        ("Sorting Basics", "Sorting in Python"),
-        ("Binary Search", "Functions in Python"),
-        ("Merge Arrays", "List Merge in Python"),
-        ("Rotate Array", "List Slicing in Python"),
-        ("Majority Element", "Counter in Python"),
-        ("Peak Element", "Min Max in Python"),
-        ("Missing Number", "Set in Python"),
-        ("Find Duplicates", "Set Operations Python"),
-        ("Subarray Sum", "Dictionary in Python"),
-        ("Prefix XOR", "Bitwise in Python"),
-        ("Advanced Arrays", "Practice in Python"),
-        ("Array Revision", "Revision"),
+        # Day 1–10 (ARRAYS)
+        ("Arrays Basics", "Python Lists", "Arrays in Java"),
+        ("Array Traversal", "List Traversal", "Array Traversal in Java"),
+        ("Prefix Sum", "Prefix Sum Logic", "Prefix Sum in Java"),
+        ("Two Pointer", "Two Pointer Logic", "Two Pointer in Java"),
+        ("Sorting", "Sorting in Python", "Sorting in Java"),
+        ("Binary Search", "Binary Search Code", "Binary Search in Java"),
+        ("2D Arrays", "2D Lists", "2D Arrays in Java"),
+        ("Subarrays", "List Slicing", "Subarrays in Java"),
+        ("Kadane Algorithm", "Max Subarray", "Kadane in Java"),
+        ("Array Revision", "List Practice", "Array Practice in Java"),
 
-        # -------- STRINGS (21–40) --------
-        ("String Basics", "Strings in Python"),
-        ("Palindrome Check", "String Slicing in Python"),
-        ("Anagram", "Sorting Strings Python"),
-        ("Frequency Count", "Dictionary Count Python"),
-        ("Substring Problems", "String Loop Python"),
-        ("Pattern Matching", "String Functions Python"),
-        ("Longest Substring", "Sliding Window Python"),
-        ("String Compression", "Replace in Python"),
-        ("Reverse String", "Reverse String Python"),
-        ("Valid Parentheses", "Stack in Python"),
-        ("String Matching", "Find Method Python"),
-        ("Count Characters", "Dict Count Python"),
-        ("Regex Basics", "Regex Python"),
-        ("Edit Distance", "Dynamic Programming Python"),
-        ("Longest Prefix", "String Logic Python"),
-        ("Advanced Strings", "Practice Python"),
-        ("String Problems 1", "Practice Python"),
-        ("String Problems 2", "Practice Python"),
-        ("String Problems 3", "Practice Python"),
-        ("String Revision", "Revision"),
+        # Day 11–20 (STRINGS)
+        ("Strings Basics", "String Methods", "Java Strings"),
+        ("String Traversal", "Loop Strings", "String Traversal in Java"),
+        ("Palindrome", "String Reverse", "Palindrome in Java"),
+        ("Anagram", "Sorting Strings", "Anagram in Java"),
+        ("Substring", "Slicing", "Substring in Java"),
+        ("Sliding Window", "Window Logic", "Sliding Window in Java"),
+        ("Hashing", "Dictionary", "HashMap in Java"),
+        ("Frequency Count", "Counter", "Frequency Map in Java"),
+        ("Pattern Matching", "in operator", "Pattern Matching Java"),
+        ("String Revision", "String Practice", "String Practice Java"),
 
-        # -------- RECURSION (41–60) --------
-        ("Recursion Basics", "Functions in Python"),
-        ("Factorial", "Recursion Python"),
-        ("Fibonacci", "Recursion Python"),
-        ("Subsets", "Recursion Python"),
-        ("Permutations", "Recursion Python"),
-        ("Combination Sum", "Recursion Python"),
-        ("Backtracking", "Advanced Functions Python"),
-        ("N Queens", "Backtracking Python"),
-        ("Sudoku Solver", "Backtracking Python"),
-        ("Maze Problem", "Recursion Python"),
-        ("Divide & Conquer", "Lambda Python"),
-        ("Merge Sort", "Sorting Python"),
-        ("Quick Sort", "Partition Python"),
-        ("Binary Recursion", "Tree Recursion Python"),
-        ("Stack Recursion", "Stack Python"),
-        ("Advanced Recursion", "Practice"),
-        ("Problems 1", "Practice"),
-        ("Problems 2", "Practice"),
-        ("Problems 3", "Practice"),
-        ("Recursion Revision", "Revision"),
+        # Day 21–40 (RECURSION + BACKTRACKING)
+        ("Recursion Basics", "Recursion Python", "Recursion in Java"),
+        ("Factorial", "Recursive Functions", "Factorial Java"),
+        ("Fibonacci", "Recursion Logic", "Fibonacci Java"),
+        ("Backtracking", "Backtracking Python", "Backtracking Java"),
+        ("Subsets", "Subsets Python", "Subsets Java"),
+        ("Permutations", "Permutations Python", "Permutations Java"),
+        ("Combination Sum", "Combination Python", "Combination Java"),
+        ("N Queens", "N Queens Python", "N Queens Java"),
+        ("Sudoku Solver", "Sudoku Python", "Sudoku Java"),
+        ("Recursion Revision", "Practice", "Recursion Practice Java"),
 
-        # -------- TREES (61–80) --------
-        ("Binary Tree Basics", "Classes in Python"),
-        ("Tree Traversal", "Recursion Python"),
-        ("Inorder Traversal", "DFS Python"),
-        ("Preorder Traversal", "DFS Python"),
-        ("Postorder Traversal", "DFS Python"),
-        ("Level Order", "Queue Python"),
-        ("Tree Height", "Recursion Python"),
-        ("Balanced Tree", "Logic Python"),
-        ("Diameter", "DFS Python"),
-        ("Binary Search Tree", "OOP Python"),
-        ("Insert BST", "Practice Python"),
-        ("Delete BST", "Practice Python"),
-        ("LCA", "Tree Python"),
-        ("Path Sum", "DFS Python"),
-        ("Serialize Tree", "Advanced Python"),
-        ("Tree Problems 1", "Practice"),
-        ("Tree Problems 2", "Practice"),
-        ("Tree Problems 3", "Practice"),
-        ("Tree Problems 4", "Practice"),
-        ("Tree Revision", "Revision"),
+        # Day 41–60 (LINKED LIST + STACK + QUEUE)
+        ("Linked List", "List Simulation", "Linked List Java"),
+        ("Reverse Linked List", "Reverse Logic", "Reverse LL Java"),
+        ("Stack", "Stack using list", "Stack Java"),
+        ("Queue", "Deque", "Queue Java"),
+        ("Valid Parentheses", "Stack Problem", "Stack Java"),
+        ("Min Stack", "Stack Python", "Min Stack Java"),
+        ("Deque", "Deque Python", "Deque Java"),
+        ("Sliding Window", "Window Python", "Window Java"),
+        ("LRU Cache", "Dict Logic", "LRU Java"),
+        ("Stack Revision", "Practice", "Stack Practice Java"),
 
-        # -------- GRAPHS (81–100) --------
-        ("Graph Basics", "Dictionary Python"),
-        ("DFS", "Recursion Python"),
-        ("BFS", "Queue Python"),
-        ("Connected Components", "DFS Python"),
-        ("Cycle Detection", "DFS Python"),
-        ("Topological Sort", "Graph Python"),
-        ("Shortest Path", "Heap Python"),
-        ("Dijkstra", "Heap Python"),
-        ("Union Find", "DSU Python"),
-        ("Graph Problems 1", "Practice"),
-        ("Graph Problems 2", "Practice"),
-        ("Graph Problems 3", "Practice"),
-        ("Mixed DSA 1", "Practice"),
-        ("Mixed DSA 2", "Practice"),
-        ("Mixed DSA 3", "Practice"),
-        ("Mock Interview 1", "Practice"),
-        ("Mock Interview 2", "Practice"),
-        ("Weak Areas", "Revision"),
-        ("Final Revision", "Revision"),
-        ("Placement Ready", "Confidence"),
+        # Day 61–80 (TREES)
+        ("Binary Tree", "Tree Python", "Binary Tree Java"),
+        ("Inorder Traversal", "DFS", "Inorder Java"),
+        ("Preorder Traversal", "DFS", "Preorder Java"),
+        ("Postorder Traversal", "DFS", "Postorder Java"),
+        ("Level Order", "BFS", "Level Order Java"),
+        ("BST", "BST Python", "BST Java"),
+        ("LCA", "Tree Logic", "LCA Java"),
+        ("Diameter", "Tree Logic", "Diameter Java"),
+        ("Path Sum", "Tree Problem", "Path Sum Java"),
+        ("Tree Revision", "Practice", "Tree Practice Java"),
+
+        # Day 81–100 (GRAPHS + DP)
+        ("Graph Basics", "Graph Python", "Graph Java"),
+        ("BFS", "Queue", "BFS Java"),
+        ("DFS", "Recursion", "DFS Java"),
+        ("Cycle Detection", "Graph Logic", "Cycle Java"),
+        ("Topological Sort", "Graph Algo", "Topo Java"),
+        ("Dijkstra", "Graph Algo", "Dijkstra Java"),
+        ("Union Find", "DSU Python", "DSU Java"),
+        ("DP Basics", "DP Python", "DP Java"),
+        ("Knapsack", "DP Problem", "Knapsack Java"),
+        ("Final Revision", "Practice", "Final Practice Java"),
     ]
 
-    dsa, py = schedule[day - 1]
+    # repeat for 100 days
+    dsa, python, java = topics[(day - 1) % len(topics)]
 
     return {
-        "dsa": {
-            "topic": dsa,
-            "video": get_video_link(dsa, "dsa")
-        },
-        "python": {
-            "topic": py,
-            "video": get_video_link(py, "python")
-        }
+    "dsa": {
+        "topic": dsa,
+        "video": f"https://www.youtube.com/results?search_query={dsa.replace(' ', '+')}+in+DSA"
+    },
+    "python": {
+        "topic": python,
+        "video": f"https://www.youtube.com/results?search_query={python.replace(' ', '+')}+python"
+    },
+    "java": {
+        "topic": java,
+        "video": f"https://www.youtube.com/results?search_query={java.replace(' ', '+')}"
     }
+}
 
-
+   
 # ---------- LEETCODE (FULL 100 DAYS) ------
 # ----
 def get_leetcode_problems(day):

@@ -1,10 +1,10 @@
 from flask import render_template, request, redirect
 import sqlite3
 
-# DSA + Python
+# existing imports
 from utils import get_day_data, get_leetcode_problems
 
-# SQL (separate file)
+# SQL
 from sql_utils import get_sql_day, get_sql_problems
 
 
@@ -60,7 +60,7 @@ def register_routes(app):
         return render_template("dashboard.html", days=days, percent=percent, streak=streak)
 
 
-    # ---------------- DSA DAY ----------------
+    # ---------------- DAY PAGE ----------------
     @app.route("/day/<int:day>")
     def day_page(day):
 
@@ -80,6 +80,7 @@ def register_routes(app):
             day=day,
             dsa=data["dsa"],
             python=data["python"],
+            java=data["java"],   # ✅ FIXED HERE
             problems=problems,
             note=note
         )
@@ -114,6 +115,7 @@ def register_routes(app):
         c.execute("INSERT OR IGNORE INTO progress (day, completed) VALUES (?, ?)", (day, 1))
         c.execute("UPDATE progress SET completed=1 WHERE day=?", (day,))
 
+        # streak calculation
         c.execute("SELECT day FROM progress ORDER BY day")
         days = [row[0] for row in c.fetchall()]
 
@@ -152,8 +154,8 @@ def register_routes(app):
         conn = sqlite3.connect("database.db")
         c = conn.cursor()
 
-        c.execute("SELECT content FROM notes WHERE day=?", (day,))
-        note = c.fetchone()
+        c.execute("SELECT problem_name FROM solved_problems WHERE day=?", (day,))
+        solved = [row[0] for row in c.fetchall()]
 
         conn.close()
 
@@ -162,5 +164,26 @@ def register_routes(app):
             day=day,
             sql=data,
             problems=problems,
-            note=note
+            solved=solved
         )
+
+
+    # ---------------- MARK SOLVED ----------------
+    @app.route("/mark_solved", methods=["POST"])
+    def mark_solved():
+
+        day = request.form["day"]
+        name = request.form["name"]
+
+        conn = sqlite3.connect("database.db")
+        c = conn.cursor()
+
+        c.execute(
+            "INSERT INTO solved_problems (day, problem_name) VALUES (?, ?)",
+            (day, name)
+        )
+
+        conn.commit()
+        conn.close()
+
+        return redirect(f"/sql/day/{day}")
